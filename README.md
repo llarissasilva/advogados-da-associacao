@@ -18,7 +18,3 @@ Além disso, o sistema visa aumentar a transparência e reduzir erros decorrente
 
 * EVELINE ALONSO VELOSO
 * JOANA GABRIELA RIBEIRO DE SOUZA
-
-## Instruções de utilização
-
-[Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.]
