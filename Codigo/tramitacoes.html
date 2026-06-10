@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AAPC — Tramitações</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="navbar__brand" href="index.html#inicio" aria-label="Ir para o início">
+        <img
+          class="navbar__logo-img"
+          src="assets/logo2.png"
+          alt="AAPC"
+          width="200"
+          height="56"
+          decoding="async"
+        />
+        <span class="navbar__tagline"
+          >Associação dos Advogados da Procuradoria Jurídica da Copasa</span
+        >
+      </a>
+      <nav class="navbar__userbar" aria-label="Sessão do usuário">
+        <div class="navbar__session">
+          <div class="navbar__greeting">
+            Olá,
+            <span class="navbar__dropdown">
+              <button
+                type="button"
+                class="navbar__name-btn"
+                id="user-menu-btn"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="user-menu-panel"
+              >
+                <span class="navbar__user-name">Marcos</span>
+              </button>
+              <div
+                class="navbar__dropdown-panel"
+                id="user-menu-panel"
+                role="menu"
+                hidden
+              >
+                <div class="navbar__dropdown-email" role="none">
+                  <span class="navbar__dropdown-label">E-mail</span>
+                  <span class="navbar__dropdown-value"
+                    >marcos.silva@copasa.com.br</span
+                  >
+                </div>
+                <a class="navbar__dropdown-item" href="#" role="menuitem"
+                  >Alterar dados</a
+                >
+                <a
+                  class="navbar__dropdown-item navbar__dropdown-item--logout"
+                  href="login.html"
+                  role="menuitem"
+                  >Sair</a
+                >
+              </div>
+            </span>
+            <span class="navbar__user-role">(Gerência)</span>
+          </div>
+          <a class="navbar__logout" href="login.html">Sair</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-content dashboard-layout">
+      <aside class="dashboard-sidebar" aria-label="Navegação do portal">
+        <nav class="dashboard-tabs" aria-label="Módulos do portal">
+          <a class="dashboard-tabs__tab" href="dashboard_gerencial.html"
+            >Dashboard gerencial</a
+          >
+          <div class="dashboard-nav-group dashboard-nav-group--advogados">
+            <button
+              type="button"
+              class="dashboard-tabs__tab dashboard-tabs__trigger"
+              aria-expanded="false"
+              aria-controls="submenu-advogados"
+            >
+              Advogados
+            </button>
+            <div class="dashboard-subtabs" id="submenu-advogados" hidden>
+              <a class="dashboard-subtabs__item" href="cadastro_advogado.html"
+                >Cadastro de advogados</a
+              >
+              <a class="dashboard-subtabs__item" href="lista_advogados.html"
+                >Lista de advogados</a
+              >
+            </div>
+          </div>
+          <div class="dashboard-nav-group dashboard-nav-group--processos">
+            <button
+              type="button"
+              class="dashboard-tabs__tab dashboard-tabs__trigger"
+              aria-expanded="false"
+              aria-controls="submenu-processos"
+            >
+              Processos
+            </button>
+            <div class="dashboard-subtabs" id="submenu-processos" hidden>
+              <a class="dashboard-subtabs__item" href="cadastro_processo.html"
+                >Cadastro de processo</a
+              >
+              <a class="dashboard-subtabs__item" href="processos.html"
+                >Lista de processos</a
+              >
+            </div>
+          </div>
+          <a
+            class="dashboard-tabs__tab dashboard-tabs__tab--active"
+            href="tramitacoes.html"
+            aria-current="page"
+            >Tramitações</a
+          >
+          <a class="dashboard-tabs__tab" href="#">Rateio financeiro</a>
+          <a class="dashboard-tabs__tab" href="gestao_diretoria.html"
+            >Gestão da diretoria</a
+          >
+        </nav>
+      </aside>
+      <div class="dashboard-shell">
+        <div class="dashboard-pagehead">
+          <div class="dashboard-pagehead__inner">
+            <h1 class="dashboard-pagehead__title">Tramitações</h1>
+          </div>
+        </div>
+
+        <main class="dashboard-main" id="conteudo-principal">
+        <div class="dashboard-main__inner">
+          <article class="dashboard-card processos-panel tramitacoes-panel">
+            <div
+              class="tramitacoes-subtabs"
+              role="tablist"
+              aria-label="Visualização de tramitações"
+            >
+              <button
+                type="button"
+                class="tramitacoes-subtab tramitacoes-subtab--active"
+                role="tab"
+                aria-selected="true"
+                id="tram-tab-recebidos"
+                data-tram-panel="recebidos"
+              >
+                Recebidos
+              </button>
+              <button
+                type="button"
+                class="tramitacoes-subtab"
+                role="tab"
+                aria-selected="false"
+                id="tram-tab-enviados"
+                data-tram-panel="enviados"
+              >
+                Enviados
+              </button>
+              <button
+                type="button"
+                class="tramitacoes-subtab"
+                role="tab"
+                aria-selected="false"
+                id="tram-tab-pendentes"
+                data-tram-panel="pendentes"
+              >
+                Pendentes
+              </button>
+            </div>
+
+            <div class="tramitacoes-toolbar">
+              <div class="tramitacoes-toolbar__filters">
+                <label class="visually-hidden" for="tram-advogado">Advogado</label>
+                <select
+                  class="processos-select"
+                  id="tram-advogado"
+                  name="advogado"
+                >
+                  <option value="">Advogado</option>
+                  <option value="1">João Silva</option>
+                  <option value="2">Maria Souza</option>
+                </select>
+                <label class="visually-hidden" for="tram-periodo">Período</label>
+                <select
+                  class="processos-select tramitacoes-select--wide"
+                  id="tram-periodo"
+                  name="periodo"
+                >
+                  <option value="30">Período: últimos 30 dias</option>
+                  <option value="7">Últimos 7 dias</option>
+                  <option value="90">Últimos 90 dias</option>
+                </select>
+              </div>
+              <div class="tramitacoes-toolbar__search">
+                <div class="processos-search tramitacoes-search">
+                  <label class="visually-hidden" for="tram-busca"
+                    >Buscar processo</label
+                  >
+                  <input
+                    class="processos-search__input"
+                    type="search"
+                    id="tram-busca"
+                    name="q"
+                    placeholder="Buscar processo…"
+                    autocomplete="off"
+                  />
+                  <button
+                    type="button"
+                    class="processos-search__submit"
+                    aria-label="Buscar"
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <circle cx="11" cy="11" r="7" />
+                      <path d="M20 20l-3-3" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-table-wrap">
+              <table class="dashboard-table tramitacoes-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Processo</th>
+                    <th scope="col">Origem</th>
+                    <th scope="col">
+                      <span class="processos-th-sort">
+                        Data de envio
+                        <svg
+                          class="processos-sort-icon"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          aria-hidden="true"
+                        >
+                          <path d="M7 15l5 5 5-5M7 9l5-5 5 5" />
+                        </svg>
+                      </span>
+                    </th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a class="tramitacoes-processo-link" href="#"
+                        >10245 / 2023</a
+                      >
+                    </td>
+                    <td>João Pereira</td>
+                    <td>10/03/2026</td>
+                    <td>
+                      <span class="tramitacoes-badge tramitacoes-badge--aguardando"
+                        >Aguardando análise</span
+                      >
+                    </td>
+                    <td class="advogados-actions-cell">
+                      <div class="advogados-dropdown">
+                        <button
+                          type="button"
+                          class="advogados-dropdown__btn"
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          aria-label="Ações do processo"
+                        >
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <circle cx="12" cy="5" r="2" />
+                            <circle cx="12" cy="12" r="2" />
+                            <circle cx="12" cy="19" r="2" />
+                          </svg>
+                        </button>
+                        <div class="advogados-dropdown__panel" role="menu" hidden>
+                          <button
+                            type="button"
+                            class="advogados-dropdown__item"
+                            role="menuitem"
+                          >
+                            Ver detalhes
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a class="tramitacoes-processo-link" href="#"
+                        >08912 / 2024</a
+                      >
+                    </td>
+                    <td>Maria Costa</td>
+                    <td>09/03/2026</td>
+                    <td>
+                      <span
+                        class="tramitacoes-badge tramitacoes-badge--analisado"
+                        >Já analisado</span
+                      >
+                    </td>
+                    <td class="advogados-actions-cell">
+                      <div class="advogados-dropdown">
+                        <button
+                          type="button"
+                          class="advogados-dropdown__btn"
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          aria-label="Ações do processo"
+                        >
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <circle cx="12" cy="5" r="2" />
+                            <circle cx="12" cy="12" r="2" />
+                            <circle cx="12" cy="19" r="2" />
+                          </svg>
+                        </button>
+                        <div class="advogados-dropdown__panel" role="menu" hidden>
+                          <button
+                            type="button"
+                            class="advogados-dropdown__item"
+                            role="menuitem"
+                          >
+                            Ver detalhes
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a class="tramitacoes-processo-link" href="#"
+                        >07633 / 2024</a
+                      >
+                    </td>
+                    <td>Carlos Almeida</td>
+                    <td>08/03/2026</td>
+                    <td>
+                      <span class="tramitacoes-badge tramitacoes-badge--aguardando"
+                        >Aguardando análise</span
+                      >
+                    </td>
+                    <td class="advogados-actions-cell">
+                      <div class="advogados-dropdown">
+                        <button
+                          type="button"
+                          class="advogados-dropdown__btn"
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          aria-label="Ações do processo"
+                        >
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <circle cx="12" cy="5" r="2" />
+                            <circle cx="12" cy="12" r="2" />
+                            <circle cx="12" cy="19" r="2" />
+                          </svg>
+                        </button>
+                        <div class="advogados-dropdown__panel" role="menu" hidden>
+                          <button
+                            type="button"
+                            class="advogados-dropdown__item"
+                            role="menuitem"
+                          >
+                            Ver detalhes
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a class="tramitacoes-processo-link" href="#"
+                        >05401 / 2025</a
+                      >
+                    </td>
+                    <td>Ana Ribeiro</td>
+                    <td>07/03/2026</td>
+                    <td>
+                      <span
+                        class="tramitacoes-badge tramitacoes-badge--analisado"
+                        >Já analisado</span
+                      >
+                    </td>
+                    <td class="advogados-actions-cell">
+                      <div class="advogados-dropdown">
+                        <button
+                          type="button"
+                          class="advogados-dropdown__btn"
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          aria-label="Ações do processo"
+                        >
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <circle cx="12" cy="5" r="2" />
+                            <circle cx="12" cy="12" r="2" />
+                            <circle cx="12" cy="19" r="2" />
+                          </svg>
+                        </button>
+                        <div class="advogados-dropdown__panel" role="menu" hidden>
+                          <button
+                            type="button"
+                            class="advogados-dropdown__item"
+                            role="menuitem"
+                          >
+                            Ver detalhes
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a class="tramitacoes-processo-link" href="#"
+                        >03188 / 2025</a
+                      >
+                    </td>
+                    <td>Pedro Santos</td>
+                    <td>05/03/2026</td>
+                    <td>
+                      <span class="tramitacoes-badge tramitacoes-badge--aguardando"
+                        >Aguardando análise</span
+                      >
+                    </td>
+                    <td class="advogados-actions-cell">
+                      <div class="advogados-dropdown">
+                        <button
+                          type="button"
+                          class="advogados-dropdown__btn"
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          aria-label="Ações do processo"
+                        >
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <circle cx="12" cy="5" r="2" />
+                            <circle cx="12" cy="12" r="2" />
+                            <circle cx="12" cy="19" r="2" />
+                          </svg>
+                        </button>
+                        <div class="advogados-dropdown__panel" role="menu" hidden>
+                          <button
+                            type="button"
+                            class="advogados-dropdown__item"
+                            role="menuitem"
+                          >
+                            Ver detalhes
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="tramitacoes-list-footer">
+              <p class="tramitacoes-range">1–5 de 5</p>
+              <nav class="tramitacoes-pagination" aria-label="Paginação">
+                <button
+                  type="button"
+                  class="processos-page-btn"
+                  disabled
+                  aria-label="Página anterior"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M15 6l-6 6 6 6" />
+                  </svg>
+                </button>
+                <div class="processos-page-numbers">
+                  <button
+                    type="button"
+                    class="processos-page-num processos-page-num--active"
+                    aria-current="page"
+                  >
+                    1
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  class="processos-page-btn"
+                  disabled
+                  aria-label="Próxima página"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </nav>
+            </div>
+          </article>
+        </div>
+      </main>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p class="footer__text">© 2026 AAPC - Todos os direitos reservados</p>
+    </footer>
+    <script>
+      (function () {
+        var root = document.querySelector(".navbar__dropdown");
+        var btn = document.getElementById("user-menu-btn");
+        var panel = document.getElementById("user-menu-panel");
+        if (!root || !btn || !panel) return;
+
+        function setOpen(open) {
+          panel.hidden = !open;
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        }
+
+        function toggle() {
+          setOpen(panel.hidden);
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggle();
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!root.contains(e.target)) setOpen(false);
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") setOpen(false);
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var root = document.querySelector(".tramitacoes-panel");
+        if (!root) return;
+
+        var subtabs = root.querySelectorAll(".tramitacoes-subtab");
+        subtabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            subtabs.forEach(function (t) {
+              t.classList.remove("tramitacoes-subtab--active");
+              t.setAttribute("aria-selected", "false");
+            });
+            tab.classList.add("tramitacoes-subtab--active");
+            tab.setAttribute("aria-selected", "true");
+          });
+        });
+
+        function closeAllTramDropdowns() {
+          root.querySelectorAll(".advogados-dropdown__panel").forEach(function (p) {
+            p.hidden = true;
+            var btn = p.previousElementSibling;
+            if (btn && btn.classList.contains("advogados-dropdown__btn")) {
+              btn.setAttribute("aria-expanded", "false");
+            }
+          });
+        }
+
+        root.addEventListener("click", function (e) {
+          var trigger = e.target.closest(".advogados-dropdown__btn");
+          if (!trigger || !root.contains(trigger)) return;
+          e.stopPropagation();
+          var dropPanel = trigger.nextElementSibling;
+          if (!dropPanel || !dropPanel.classList.contains("advogados-dropdown__panel"))
+            return;
+          var willOpen = dropPanel.hidden;
+          closeAllTramDropdowns();
+          if (willOpen) {
+            dropPanel.hidden = false;
+            trigger.setAttribute("aria-expanded", "true");
+          }
+        });
+
+        document.addEventListener("click", function () {
+          closeAllTramDropdowns();
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeAllTramDropdowns();
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var nav = document.querySelector(".dashboard-sidebar nav.dashboard-tabs");
+        if (!nav) return;
+        var groups = nav.querySelectorAll(".dashboard-nav-group");
+
+        function closeGroup(group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+          group.classList.remove("is-open");
+          submenu.hidden = true;
+          trigger.setAttribute("aria-expanded", "false");
+        }
+
+        function openGroup(group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+          group.classList.add("is-open");
+          submenu.hidden = false;
+          trigger.setAttribute("aria-expanded", "true");
+        }
+
+        function closeOthers(except) {
+          groups.forEach(function (g) {
+            if (g !== except) closeGroup(g);
+          });
+        }
+
+        groups.forEach(function (group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+
+          if (group.classList.contains("is-open")) {
+            openGroup(group);
+          } else {
+            closeGroup(group);
+          }
+
+          trigger.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (submenu.hidden) {
+              closeOthers(group);
+              openGroup(group);
+            } else {
+              closeGroup(group);
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

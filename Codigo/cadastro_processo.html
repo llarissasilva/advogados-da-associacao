@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AAPC — Cadastro de processo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="navbar__brand" href="index.html#inicio" aria-label="Ir para o início">
+        <img
+          class="navbar__logo-img"
+          src="assets/logo2.png"
+          alt="AAPC"
+          width="200"
+          height="56"
+          decoding="async"
+        />
+        <span class="navbar__tagline"
+          >Associação dos Advogados da Procuradoria Jurídica da Copasa</span
+        >
+      </a>
+      <nav class="navbar__userbar" aria-label="Sessão do usuário">
+        <div class="navbar__session">
+          <div class="navbar__greeting">
+            Olá,
+            <span class="navbar__dropdown">
+              <button
+                type="button"
+                class="navbar__name-btn"
+                id="user-menu-btn"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="user-menu-panel"
+              >
+                <span class="navbar__user-name">Marcos</span>
+              </button>
+              <div
+                class="navbar__dropdown-panel"
+                id="user-menu-panel"
+                role="menu"
+                hidden
+              >
+                <div class="navbar__dropdown-email" role="none">
+                  <span class="navbar__dropdown-label">E-mail</span>
+                  <span class="navbar__dropdown-value"
+                    >marcos.silva@copasa.com.br</span
+                  >
+                </div>
+                <a class="navbar__dropdown-item" href="#" role="menuitem"
+                  >Alterar dados</a
+                >
+                <a
+                  class="navbar__dropdown-item navbar__dropdown-item--logout"
+                  href="login.html"
+                  role="menuitem"
+                  >Sair</a
+                >
+              </div>
+            </span>
+            <span class="navbar__user-role">(Gerência)</span>
+          </div>
+          <a class="navbar__logout" href="login.html">Sair</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-content dashboard-layout">
+      <aside class="dashboard-sidebar" aria-label="Navegação do portal">
+        <nav class="dashboard-tabs" aria-label="Módulos do portal">
+          <a class="dashboard-tabs__tab" href="dashboard_gerencial.html"
+            >Dashboard gerencial</a
+          >
+          <div class="dashboard-nav-group dashboard-nav-group--advogados">
+            <button
+              type="button"
+              class="dashboard-tabs__tab dashboard-tabs__trigger"
+              aria-expanded="false"
+              aria-controls="submenu-advogados"
+            >
+              Advogados
+            </button>
+            <div class="dashboard-subtabs" id="submenu-advogados" hidden>
+              <a class="dashboard-subtabs__item" href="cadastro_advogado.html"
+                >Cadastro de advogados</a
+              >
+              <a class="dashboard-subtabs__item" href="lista_advogados.html"
+                >Lista de advogados</a
+              >
+            </div>
+          </div>
+          <div class="dashboard-nav-group dashboard-nav-group--processos is-open">
+            <button
+              type="button"
+              class="dashboard-tabs__tab dashboard-tabs__trigger dashboard-tabs__tab--active"
+              aria-expanded="true"
+              aria-current="page"
+              aria-controls="submenu-processos"
+            >
+              Processos
+            </button>
+            <div class="dashboard-subtabs" id="submenu-processos">
+              <a
+                class="dashboard-subtabs__item dashboard-subtabs__item--active"
+                href="cadastro_processo.html"
+                aria-current="page"
+                >Cadastro de processo</a
+              >
+              <a class="dashboard-subtabs__item" href="processos.html"
+                >Lista de processos</a
+              >
+            </div>
+          </div>
+          <a class="dashboard-tabs__tab" href="tramitacoes.html">Tramitações</a>
+          <a class="dashboard-tabs__tab" href="#">Rateio financeiro</a>
+          <a class="dashboard-tabs__tab" href="gestao_diretoria.html"
+            >Gestão da diretoria</a
+          >
+        </nav>
+      </aside>
+
+      <div class="dashboard-shell">
+        <div class="dashboard-pagehead">
+          <div class="dashboard-pagehead__inner">
+            <h1 class="dashboard-pagehead__title">Cadastro de processo</h1>
+          </div>
+        </div>
+
+        <main class="dashboard-main" id="conteudo-principal">
+          <div class="dashboard-main__inner">
+            <article class="dashboard-card">
+              <header class="modal__header">
+                <h2 class="modal__title">Cadastro de processo</h2>
+                <a href="processos.html" class="modal__close" aria-label="Fechar e voltar">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </a>
+              </header>
+
+              <form id="cadastro-processo-form">
+                <input type="hidden" name="advogado_distribuicao" id="advogado-distribuicao" value="" />
+                <div class="modal__body">
+                  <fieldset class="modal__block">
+                    <legend class="modal__block-title">Dados do processo</legend>
+
+                    <div class="modal__field">
+                      <label class="modal__label" for="cp-numero"
+                        >Número do processo (CNJ)</label
+                      >
+                      <input
+                        class="modal__input"
+                        type="text"
+                        id="cp-numero"
+                        name="numero_processo"
+                        placeholder="000000-00.0000.0.0000"
+                        required
+                      />
+                    </div>
+
+                    <div class="modal__field">
+                      <label class="modal__label" for="cp-data-sentenca"
+                        >Data da sentença</label
+                      >
+                      <div class="modal__input-wrap--date">
+                        <input
+                          class="modal__input modal__input--date-text"
+                          type="text"
+                          id="cp-data-sentenca"
+                          name="data_sentenca"
+                          placeholder="dd/mm/aaaa"
+                        />
+                        <span class="modal__input-date-icon" aria-hidden="true">
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <path d="M16 2v4M8 2v4M3 10h18" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="modal__block modal__block--lined">
+                    <legend class="modal__heading-with-icon">
+                      <svg
+                        class="modal__heading-icon"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg>
+                      Distribuição
+                    </legend>
+
+                    <ul class="modal-suggest-list">
+                      <li class="modal-suggest modal-suggest--yellow">
+                        <span class="modal-suggest__rank">1</span>
+                        <span class="modal-suggest__avatar">JS</span>
+                        <span class="modal-suggest__text">
+                          <strong class="modal-suggest__name">João Silva</strong>
+                          <span class="modal-suggest__meta">(2 processos ativos)</span>
+                        </span>
+                        <button type="button" class="modal-suggest__btn">Selecionar</button>
+                      </li>
+                      <li class="modal-suggest modal-suggest--blue">
+                        <span class="modal-suggest__rank">2</span>
+                        <span class="modal-suggest__avatar">MS</span>
+                        <span class="modal-suggest__text">
+                          <strong class="modal-suggest__name">Maria Souza</strong>
+                          <span class="modal-suggest__meta">(3 processos ativos)</span>
+                        </span>
+                        <button type="button" class="modal-suggest__btn">Selecionar</button>
+                      </li>
+                      <li class="modal-suggest modal-suggest--pink">
+                        <span class="modal-suggest__rank">3</span>
+                        <span class="modal-suggest__avatar">PL</span>
+                        <span class="modal-suggest__text">
+                          <strong class="modal-suggest__name">Pedro Lima</strong>
+                          <span class="modal-suggest__meta">(5 processos ativos)</span>
+                        </span>
+                        <button type="button" class="modal-suggest__btn">Selecionar</button>
+                      </li>
+                      <li class="modal-suggest modal-suggest--outro">
+                        <span class="modal-suggest__rank" aria-hidden="true">—</span>
+                        <span class="modal-suggest__avatar modal-suggest__avatar--outro">+</span>
+                        <span class="modal-suggest__text">
+                          <strong class="modal-suggest__name">Outro</strong>
+                          <span class="modal-suggest__meta">Escolher entre todos os advogados cadastrados</span>
+                        </span>
+                        <button
+                          type="button"
+                          class="modal-suggest__btn"
+                          id="btn-distribuicao-outro"
+                          aria-expanded="false"
+                          aria-controls="distribuicao-outro-panel"
+                        >
+                          Abrir lista
+                        </button>
+                      </li>
+                    </ul>
+
+                    <div
+                      class="distribuicao-outro-panel"
+                      id="distribuicao-outro-panel"
+                      role="region"
+                      aria-label="Lista completa de advogados"
+                      hidden
+                    >
+                      <label class="visually-hidden" for="distribuicao-busca">Buscar advogado por nome</label>
+                      <input
+                        type="search"
+                        id="distribuicao-busca"
+                        class="distribuicao-outro-search"
+                        placeholder="Buscar por nome…"
+                        autocomplete="off"
+                      />
+                      <ul class="distribuicao-outro-list" id="distribuicao-outro-list" role="listbox" aria-label="Advogados cadastrados"></ul>
+                      <p class="distribuicao-outro-hint" id="distribuicao-outro-empty" hidden>
+                        Nenhum advogado encontrado com esse nome.
+                      </p>
+                      <p class="distribuicao-outro-selecao" id="distribuicao-outro-selecao" hidden></p>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="modal__block modal__block--lined">
+                    <legend class="modal__heading-with-icon">
+                      <svg
+                        class="modal__heading-icon"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        aria-hidden="true"
+                      >
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <path d="M14 2v6h6" />
+                        <path d="M16 13H8M16 17H8M10 9H8" />
+                      </svg>
+                      Documentação
+                    </legend>
+
+                    <div class="modal-upload-row modal-upload-row--no-select">
+                      <div class="modal-upload-row__lead">
+                        <span class="modal-upload-row__doc-ic" aria-hidden="true">
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <path d="M14 2v6h6" />
+                          </svg>
+                        </span>
+                        <span class="modal-upload-row__label">Sentença transitada em julgado</span>
+                      </div>
+                      <div class="modal-upload-row__file">
+                        <input id="cp-upload-sentenca" type="file" class="visually-hidden" />
+                        <button
+                          type="button"
+                          class="modal-upload-row__choose"
+                          data-file-trigger="cp-upload-sentenca"
+                        >
+                          Escolher arquivo
+                        </button>
+                        <span
+                          class="modal-upload-row__filename"
+                          id="cp-upload-sentenca-label"
+                          aria-live="polite"
+                        ></span>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <footer class="modal__footer">
+                  <a href="processos.html" class="modal__btn modal__btn--ghost">Cancelar</a>
+                  <button type="submit" class="modal__btn modal__btn--primary">
+                    Salvar e distribuir
+                  </button>
+                </footer>
+              </form>
+            </article>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p class="footer__text">© 2026 AAPC - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+      (function () {
+        var root = document.querySelector(".navbar__dropdown");
+        var btn = document.getElementById("user-menu-btn");
+        var panel = document.getElementById("user-menu-panel");
+        if (!root || !btn || !panel) return;
+
+        function setOpen(open) {
+          panel.hidden = !open;
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          setOpen(panel.hidden);
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!root.contains(e.target)) setOpen(false);
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") setOpen(false);
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var nav = document.querySelector(".dashboard-sidebar nav.dashboard-tabs");
+        if (!nav) return;
+        var groups = nav.querySelectorAll(".dashboard-nav-group");
+
+        function closeGroup(group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+          group.classList.remove("is-open");
+          submenu.hidden = true;
+          trigger.setAttribute("aria-expanded", "false");
+        }
+
+        function openGroup(group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+          group.classList.add("is-open");
+          submenu.hidden = false;
+          trigger.setAttribute("aria-expanded", "true");
+        }
+
+        function closeOthers(except) {
+          groups.forEach(function (g) {
+            if (g !== except) closeGroup(g);
+          });
+        }
+
+        groups.forEach(function (group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+
+          if (group.classList.contains("is-open")) {
+            openGroup(group);
+          } else {
+            closeGroup(group);
+          }
+
+          trigger.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (submenu.hidden) {
+              closeOthers(group);
+              openGroup(group);
+            } else {
+              closeGroup(group);
+            }
+          });
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        function bindFileRow(inputId) {
+          var input = document.getElementById(inputId);
+          if (!input) return;
+          var labelEl = document.getElementById(inputId + "-label");
+          if (!labelEl) return;
+
+          input.addEventListener("change", function () {
+            var f = input.files && input.files[0];
+            labelEl.textContent = f ? f.name : "";
+          });
+
+          document
+            .querySelectorAll('[data-file-trigger="' + inputId + '"]')
+            .forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                input.click();
+              });
+            });
+        }
+
+        bindFileRow("cp-upload-sentenca");
+      })();
+    </script>
+    <script>
+      (function () {
+        var advogadosCadastrados = [
+          { nome: "João Silva", email: "joao.silva@copasa.com.br", processos: 2 },
+          { nome: "Maria Souza", email: "maria.souza@copasa.com.br", processos: 3 },
+          { nome: "Pedro Lima", email: "pedro.lima@copasa.com.br", processos: 5 },
+          { nome: "Ana Paula Ribeiro", email: "ana.ribeiro@copasa.com.br", processos: 1 },
+          { nome: "Carlos Ferreira", email: "carlos.ferreira@gmail.com", processos: 4 },
+          { nome: "Fernanda Castro", email: "fernanda.castro@gmail.com", processos: 2 },
+          { nome: "Ricardo Mendes", email: "ricardo.mendes@copasa.com.br", processos: 6 },
+          { nome: "Juliana Matos", email: "juliana.matos@gmail.com", processos: 1 },
+          { nome: "Lucas Andrade", email: "lucas.andrade@copasa.com.br", processos: 3 },
+          { nome: "Beatriz Nunes", email: "beatriz.nunes@outlook.com", processos: 2 },
+          { nome: "Marcos Henrique Alves", email: "marcos.alves@copasa.com.br", processos: 4 },
+          { nome: "Patrícia Duarte", email: "patricia.duarte@copasa.com.br", processos: 1 }
+        ];
+
+        function iniciais(nome) {
+          var p = nome.trim().split(/\s+/);
+          if (p.length === 1) return p[0].slice(0, 2).toUpperCase();
+          return (p[0][0] + p[p.length - 1][0]).toUpperCase();
+        }
+
+        var hidden = document.getElementById("advogado-distribuicao");
+        var panel = document.getElementById("distribuicao-outro-panel");
+        var btnOutro = document.getElementById("btn-distribuicao-outro");
+        var busca = document.getElementById("distribuicao-busca");
+        var listEl = document.getElementById("distribuicao-outro-list");
+        var emptyEl = document.getElementById("distribuicao-outro-empty");
+        var selecaoEl = document.getElementById("distribuicao-outro-selecao");
+        if (!hidden || !panel || !btnOutro || !busca || !listEl) return;
+
+        function setDistribuicao(texto) {
+          hidden.value = texto;
+        }
+
+        function renderLista(filtro) {
+          var q = (filtro || "").trim().toLowerCase();
+          listEl.innerHTML = "";
+          var mostrados = 0;
+          advogadosCadastrados.forEach(function (a) {
+            var ok = !q || a.nome.toLowerCase().indexOf(q) !== -1;
+            if (!ok) return;
+            mostrados++;
+            var li = document.createElement("li");
+            li.className = "distribuicao-outro-list__item";
+            li.setAttribute("role", "option");
+            var btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "distribuicao-outro-row";
+            btn.setAttribute("data-nome", a.nome);
+            btn.setAttribute("data-email", a.email);
+            btn.innerHTML =
+              '<span class="modal-suggest__avatar">' +
+              iniciais(a.nome) +
+              "</span>" +
+              '<span class="modal-suggest__text">' +
+              '<strong class="modal-suggest__name">' +
+              a.nome +
+              "</strong>" +
+              '<span class="modal-suggest__meta">(' +
+              a.processos +
+              " processos ativos) · " +
+              a.email +
+              "</span>" +
+              "</span>" +
+              '<span class="distribuicao-outro-row__action">Selecionar</span>';
+            listEl.appendChild(li);
+            li.appendChild(btn);
+          });
+          emptyEl.hidden = mostrados > 0;
+        }
+
+        advogadosCadastrados.sort(function (a, b) {
+          return a.nome.localeCompare(b.nome, "pt-BR");
+        });
+        renderLista("");
+
+        btnOutro.addEventListener("click", function () {
+          var aberto = panel.hidden;
+          panel.hidden = !aberto;
+          btnOutro.setAttribute("aria-expanded", aberto ? "true" : "false");
+          btnOutro.textContent = aberto ? "Fechar lista" : "Abrir lista";
+          if (aberto) {
+            busca.value = "";
+            renderLista("");
+            busca.focus();
+          }
+        });
+
+        busca.addEventListener("input", function () {
+          renderLista(busca.value);
+        });
+
+        listEl.addEventListener("click", function (e) {
+          var row = e.target.closest(".distribuicao-outro-row");
+          if (!row) return;
+          var nome = row.getAttribute("data-nome");
+          var email = row.getAttribute("data-email");
+          setDistribuicao(nome + " <" + email + ">");
+          selecaoEl.hidden = false;
+          selecaoEl.textContent =
+            "Advogado selecionado (Outro): " + nome + " (" + email + ").";
+          panel.hidden = true;
+          btnOutro.setAttribute("aria-expanded", "false");
+          btnOutro.textContent = "Abrir lista";
+        });
+
+        var suggestList = document.querySelector(".modal-suggest-list");
+        if (suggestList) {
+          suggestList.addEventListener("click", function (e) {
+            var btn = e.target.closest(".modal-suggest__btn");
+            if (!btn || btn.id === "btn-distribuicao-outro") return;
+            var li = btn.closest("li");
+            if (!li || li.classList.contains("modal-suggest--outro")) return;
+            var nomeEl = li.querySelector(".modal-suggest__name");
+            var nome = nomeEl ? nomeEl.textContent.trim() : "";
+            setDistribuicao("Sugestão: " + nome);
+            selecaoEl.hidden = true;
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

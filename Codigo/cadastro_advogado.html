@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AAPC — Aprovação de cadastro de advogados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="navbar__brand" href="index.html#inicio" aria-label="Ir para o início">
+        <img
+          class="navbar__logo-img"
+          src="assets/logo2.png"
+          alt="AAPC"
+          width="200"
+          height="56"
+          decoding="async"
+        />
+        <span class="navbar__tagline"
+          >Associação dos Advogados da Procuradoria Jurídica da Copasa</span
+        >
+      </a>
+      <nav class="navbar__userbar" aria-label="Sessão do usuário">
+        <div class="navbar__session">
+          <div class="navbar__greeting">
+            Olá,
+            <span class="navbar__dropdown">
+              <button
+                type="button"
+                class="navbar__name-btn"
+                id="user-menu-btn"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="user-menu-panel"
+              >
+                <span class="navbar__user-name">Marcos</span>
+              </button>
+              <div
+                class="navbar__dropdown-panel"
+                id="user-menu-panel"
+                role="menu"
+                hidden
+              >
+                <div class="navbar__dropdown-email" role="none">
+                  <span class="navbar__dropdown-label">E-mail</span>
+                  <span class="navbar__dropdown-value"
+                    >marcos.silva@copasa.com.br</span
+                  >
+                </div>
+                <a class="navbar__dropdown-item" href="#" role="menuitem"
+                  >Alterar dados</a
+                >
+                <a
+                  class="navbar__dropdown-item navbar__dropdown-item--logout"
+                  href="login.html"
+                  role="menuitem"
+                  >Sair</a
+                >
+              </div>
+            </span>
+            <span class="navbar__user-role">(Gerência)</span>
+          </div>
+          <a class="navbar__logout" href="login.html">Sair</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-content dashboard-layout">
+      <aside class="dashboard-sidebar" aria-label="Navegação do portal">
+        <nav class="dashboard-tabs" aria-label="Módulos do portal">
+          <a class="dashboard-tabs__tab" href="dashboard_gerencial.html"
+            >Dashboard gerencial</a
+          >
+          <div class="dashboard-nav-group dashboard-nav-group--advogados is-open">
+            <button
+              type="button"
+              class="dashboard-tabs__tab dashboard-tabs__trigger dashboard-tabs__tab--active"
+              aria-expanded="true"
+              aria-current="page"
+              aria-controls="submenu-advogados"
+            >
+              Advogados
+            </button>
+            <div class="dashboard-subtabs" id="submenu-advogados">
+              <a
+                class="dashboard-subtabs__item dashboard-subtabs__item--active"
+                href="cadastro_advogado.html"
+                aria-current="page"
+                >Cadastro de advogados</a
+              >
+              <a class="dashboard-subtabs__item" href="lista_advogados.html"
+                >Lista de advogados</a
+              >
+            </div>
+          </div>
+          <div class="dashboard-nav-group dashboard-nav-group--processos">
+            <button
+              type="button"
+              class="dashboard-tabs__tab dashboard-tabs__trigger"
+              aria-expanded="false"
+              aria-controls="submenu-processos"
+            >
+              Processos
+            </button>
+            <div class="dashboard-subtabs" id="submenu-processos" hidden>
+              <a class="dashboard-subtabs__item" href="cadastro_processo.html"
+                >Cadastro de processo</a
+              >
+              <a class="dashboard-subtabs__item" href="processos.html"
+                >Lista de processos</a
+              >
+            </div>
+          </div>
+          <a class="dashboard-tabs__tab" href="tramitacoes.html">Tramitações</a>
+          <a class="dashboard-tabs__tab" href="#">Rateio financeiro</a>
+          <a class="dashboard-tabs__tab" href="gestao_diretoria.html"
+            >Gestão da diretoria</a
+          >
+        </nav>
+      </aside>
+
+      <div class="dashboard-shell">
+        <div class="dashboard-pagehead">
+          <div class="dashboard-pagehead__inner">
+            <h1 class="dashboard-pagehead__title">Cadastro de advogados</h1>
+          </div>
+        </div>
+
+        <main class="dashboard-main" id="conteudo-principal">
+          <div class="dashboard-main__inner">
+            <article class="dashboard-card cadastro-aprovacao-panel">
+              <header class="cadastro-aprovacao-head">
+                <div>
+                  <h2 class="cadastro-aprovacao-head__title">Cadastros pendentes de aprovação</h2>
+                  <p class="cadastro-aprovacao-head__text">
+                    O advogado só poderá acessar o login após aprovação da gerência.
+                  </p>
+                </div>
+                <p class="cadastro-aprovacao-head__count">
+                  Pendentes: <strong id="pendentes-count">5</strong>
+                </p>
+              </header>
+
+              <div class="dashboard-table-wrap">
+                <table class="dashboard-table cadastro-aprovacao-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nome</th>
+                      <th scope="col">E-mail</th>
+                      <th scope="col">Data do cadastro</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cadastro-aprovacao-body">
+                    <tr>
+                      <td>Ana Paula Ribeiro</td>
+                      <td>ana.ribeiro@copasa.com.br</td>
+                      <td>13/04/2026</td>
+                      <td><span class="cadastro-status cadastro-status--pendente">Pendente</span></td>
+                      <td>
+                        <div class="cadastro-acoes">
+                          <button type="button" class="cadastro-btn cadastro-btn--aprovar" data-acao="aprovar">
+                            Aprovar
+                          </button>
+                          <button type="button" class="cadastro-btn cadastro-btn--reprovar" data-acao="reprovar">
+                            Não aprovar
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>João Pedro Lima</td>
+                      <td>joaopedro.lima@gmail.com</td>
+                      <td>13/04/2026</td>
+                      <td><span class="cadastro-status cadastro-status--pendente">Pendente</span></td>
+                      <td>
+                        <div class="cadastro-acoes">
+                          <button type="button" class="cadastro-btn cadastro-btn--aprovar" data-acao="aprovar">
+                            Aprovar
+                          </button>
+                          <button type="button" class="cadastro-btn cadastro-btn--reprovar" data-acao="reprovar">
+                            Não aprovar
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Carla Mendes Souza</td>
+                      <td>carla.mendes@outlook.com</td>
+                      <td>12/04/2026</td>
+                      <td><span class="cadastro-status cadastro-status--pendente">Pendente</span></td>
+                      <td>
+                        <div class="cadastro-acoes">
+                          <button type="button" class="cadastro-btn cadastro-btn--aprovar" data-acao="aprovar">
+                            Aprovar
+                          </button>
+                          <button type="button" class="cadastro-btn cadastro-btn--reprovar" data-acao="reprovar">
+                            Não aprovar
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Marcos Henrique Alves</td>
+                      <td>marcos.alves@copasa.com.br</td>
+                      <td>12/04/2026</td>
+                      <td><span class="cadastro-status cadastro-status--pendente">Pendente</span></td>
+                      <td>
+                        <div class="cadastro-acoes">
+                          <button type="button" class="cadastro-btn cadastro-btn--aprovar" data-acao="aprovar">
+                            Aprovar
+                          </button>
+                          <button type="button" class="cadastro-btn cadastro-btn--reprovar" data-acao="reprovar">
+                            Não aprovar
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Fernanda Castro</td>
+                      <td>fernanda.castro@gmail.com</td>
+                      <td>11/04/2026</td>
+                      <td><span class="cadastro-status cadastro-status--pendente">Pendente</span></td>
+                      <td>
+                        <div class="cadastro-acoes">
+                          <button type="button" class="cadastro-btn cadastro-btn--aprovar" data-acao="aprovar">
+                            Aprovar
+                          </button>
+                          <button type="button" class="cadastro-btn cadastro-btn--reprovar" data-acao="reprovar">
+                            Não aprovar
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="cadastro-aprovacao-feedback" id="cadastro-feedback" hidden></p>
+            </article>
+
+            <article class="dashboard-card cadastro-aprovacao-panel">
+              <header class="cadastro-aprovacao-head cadastro-aprovacao-head--toolbar">
+                <div>
+                  <h2 class="cadastro-aprovacao-head__title">Cadastros aprovados</h2>
+                  <p class="cadastro-aprovacao-head__text">
+                    Remover cadastro revoga apenas o acesso ao portal. O histórico no banco não é excluído.
+                  </p>
+                </div>
+                <div class="cadastro-aprovacao-toolbar">
+                  <div class="processos-search cadastro-aprovacao-search" role="search">
+                    <label class="visually-hidden" for="busca-aprovados"
+                      >Buscar por nome, e-mail ou data</label
+                    >
+                    <input
+                      class="processos-search__input"
+                      type="search"
+                      id="busca-aprovados"
+                      name="q_aprovados"
+                      placeholder="Nome, e-mail ou data…"
+                      autocomplete="off"
+                    />
+                    <button
+                      type="button"
+                      class="processos-search__submit"
+                      id="busca-aprovados-btn"
+                      aria-label="Buscar"
+                    >
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        aria-hidden="true"
+                      >
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="M20 20l-3-3" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="cadastro-aprovacao-head__count">
+                    Aprovados: <strong id="aprovados-count">2</strong>
+                  </p>
+                </div>
+              </header>
+
+              <div class="dashboard-table-wrap">
+                <table class="dashboard-table cadastro-aprovacao-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nome</th>
+                      <th scope="col">E-mail</th>
+                      <th scope="col">Data da aprovação</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cadastro-aprovados-body">
+                    <tr>
+                      <td>Lucas Andrade</td>
+                      <td>lucas.andrade@copasa.com.br</td>
+                      <td>10/04/2026</td>
+                      <td><span class="cadastro-status cadastro-status--aprovado">Aprovado</span></td>
+                      <td>
+                        <div class="cadastro-acoes">
+                          <button type="button" class="cadastro-btn cadastro-btn--remover" data-acao="remover-acesso">
+                            Remover acesso
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Juliana Matos</td>
+                      <td>juliana.matos@gmail.com</td>
+                      <td>09/04/2026</td>
+                      <td><span class="cadastro-status cadastro-status--aprovado">Aprovado</span></td>
+                      <td>
+                        <div class="cadastro-acoes">
+                          <button type="button" class="cadastro-btn cadastro-btn--remover" data-acao="remover-acesso">
+                            Remover acesso
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="dashboard-card cadastro-aprovacao-panel">
+              <header class="cadastro-aprovacao-head cadastro-aprovacao-head--removidos">
+                <div class="cadastro-aprovacao-head__removidos-top">
+                  <h2 class="cadastro-aprovacao-head__title">Cadastros removidos</h2>
+                  <div class="cadastro-aprovacao-toolbar">
+                    <div class="processos-search cadastro-aprovacao-search" role="search">
+                      <label class="visually-hidden" for="busca-removidos"
+                        >Buscar por nome, e-mail ou data</label
+                      >
+                      <input
+                        class="processos-search__input"
+                        type="search"
+                        id="busca-removidos"
+                        name="q_removidos"
+                        placeholder="Nome, e-mail ou data…"
+                        autocomplete="off"
+                      />
+                      <button
+                        type="button"
+                        class="processos-search__submit"
+                        id="busca-removidos-btn"
+                        aria-label="Buscar"
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          aria-hidden="true"
+                        >
+                          <circle cx="11" cy="11" r="7" />
+                          <path d="M20 20l-3-3" />
+                        </svg>
+                      </button>
+                    </div>
+                    <p class="cadastro-aprovacao-head__count cadastro-aprovacao-head__count--removidos">
+                      Removidos: <strong id="removidos-count">0</strong>
+                    </p>
+                  </div>
+                </div>
+                <p class="cadastro-aprovacao-head__text">
+                  Advogados que tiveram o acesso ao portal revogado. O histórico no banco permanece; você pode
+                  restaurar o acesso quando for o caso.
+                </p>
+              </header>
+
+              <div class="dashboard-table-wrap">
+                <table class="dashboard-table cadastro-aprovacao-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nome</th>
+                      <th scope="col">E-mail</th>
+                      <th scope="col">Data da remoção</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cadastro-removidos-body">
+                    <tr class="cadastro-aprovacao-empty-row">
+                      <td colspan="5" class="cadastro-aprovacao-empty">
+                        Nenhum cadastro removido no momento.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p class="footer__text">© 2026 AAPC - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+      (function () {
+        var root = document.querySelector(".navbar__dropdown");
+        var btn = document.getElementById("user-menu-btn");
+        var panel = document.getElementById("user-menu-panel");
+        if (!root || !btn || !panel) return;
+
+        function setOpen(open) {
+          panel.hidden = !open;
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          setOpen(panel.hidden);
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!root.contains(e.target)) setOpen(false);
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") setOpen(false);
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var nav = document.querySelector(".dashboard-sidebar nav.dashboard-tabs");
+        if (!nav) return;
+        var groups = nav.querySelectorAll(".dashboard-nav-group");
+
+        function closeGroup(group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+          group.classList.remove("is-open");
+          submenu.hidden = true;
+          trigger.setAttribute("aria-expanded", "false");
+        }
+
+        function openGroup(group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+          group.classList.add("is-open");
+          submenu.hidden = false;
+          trigger.setAttribute("aria-expanded", "true");
+        }
+
+        function closeOthers(except) {
+          groups.forEach(function (g) {
+            if (g !== except) closeGroup(g);
+          });
+        }
+
+        groups.forEach(function (group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+
+          if (group.classList.contains("is-open")) {
+            openGroup(group);
+          } else {
+            closeGroup(group);
+          }
+
+          trigger.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (submenu.hidden) {
+              closeOthers(group);
+              openGroup(group);
+            } else {
+              closeGroup(group);
+            }
+          });
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var tbody = document.getElementById("cadastro-aprovacao-body");
+        var approvedBody = document.getElementById("cadastro-aprovados-body");
+        var removedBody = document.getElementById("cadastro-removidos-body");
+        var count = document.getElementById("pendentes-count");
+        var approvedCount = document.getElementById("aprovados-count");
+        var removidosCount = document.getElementById("removidos-count");
+        var feedback = document.getElementById("cadastro-feedback");
+        var buscaAprovados = document.getElementById("busca-aprovados");
+        var buscaAprovadosBtn = document.getElementById("busca-aprovados-btn");
+        var buscaRemovidos = document.getElementById("busca-removidos");
+        var buscaRemovidosBtn = document.getElementById("busca-removidos-btn");
+        if (!tbody || !approvedBody || !removedBody || !count || !approvedCount || !removidosCount || !feedback)
+          return;
+
+        function getDataRows(targetBody) {
+          return targetBody.querySelectorAll("tr:not(.cadastro-aprovacao-empty-row)");
+        }
+
+        function refreshPendingCount() {
+          var total = getDataRows(tbody).length;
+          count.textContent = String(total);
+          if (total === 0 && !tbody.querySelector(".cadastro-aprovacao-empty-row")) {
+            tbody.innerHTML =
+              '<tr class="cadastro-aprovacao-empty-row"><td colspan="5" class="cadastro-aprovacao-empty">Nenhum cadastro pendente no momento.</td></tr>';
+          }
+        }
+
+        function refreshApprovedCount() {
+          var total = getDataRows(approvedBody).length;
+          approvedCount.textContent = String(total);
+          if (
+            total === 0 &&
+            !approvedBody.querySelector(".cadastro-aprovacao-empty-row")
+          ) {
+            approvedBody.innerHTML =
+              '<tr class="cadastro-aprovacao-empty-row"><td colspan="5" class="cadastro-aprovacao-empty">Nenhum cadastro aprovado no momento.</td></tr>';
+          }
+        }
+
+        function refreshRemovedCount() {
+          var total = getDataRows(removedBody).length;
+          removidosCount.textContent = String(total);
+          if (
+            total === 0 &&
+            !removedBody.querySelector(".cadastro-aprovacao-empty-row")
+          ) {
+            removedBody.innerHTML =
+              '<tr class="cadastro-aprovacao-empty-row"><td colspan="5" class="cadastro-aprovacao-empty">Nenhum cadastro removido no momento.</td></tr>';
+          }
+        }
+
+        function filtrarAprovados() {
+          if (!buscaAprovados) return;
+          var q = buscaAprovados.value.trim().toLowerCase();
+          var rows = approvedBody.querySelectorAll("tr:not(.cadastro-aprovacao-empty-row)");
+          rows.forEach(function (row) {
+            var nome = row.children[0] ? row.children[0].textContent.trim() : "";
+            var email = row.children[1] ? row.children[1].textContent.trim() : "";
+            var data = row.children[2] ? row.children[2].textContent.trim() : "";
+            var dataNorm = data.replace(/\//g, "");
+            var qNorm = q.replace(/\//g, "");
+            var haystack = (nome + " " + email + " " + data).toLowerCase();
+            var match =
+              !q ||
+              haystack.indexOf(q) !== -1 ||
+              dataNorm.indexOf(qNorm) !== -1;
+            row.style.display = match ? "" : "none";
+          });
+        }
+
+        function filtrarRemovidos() {
+          if (!buscaRemovidos) return;
+          var q = buscaRemovidos.value.trim().toLowerCase();
+          var rows = removedBody.querySelectorAll("tr:not(.cadastro-aprovacao-empty-row)");
+          rows.forEach(function (row) {
+            var nome = row.children[0] ? row.children[0].textContent.trim() : "";
+            var email = row.children[1] ? row.children[1].textContent.trim() : "";
+            var data = row.children[2] ? row.children[2].textContent.trim() : "";
+            var dataNorm = data.replace(/\//g, "");
+            var qNorm = q.replace(/\//g, "");
+            var haystack = (nome + " " + email + " " + data).toLowerCase();
+            var match =
+              !q ||
+              haystack.indexOf(q) !== -1 ||
+              dataNorm.indexOf(qNorm) !== -1;
+            row.style.display = match ? "" : "none";
+          });
+        }
+
+        if (buscaAprovados) {
+          buscaAprovados.addEventListener("input", filtrarAprovados);
+        }
+        if (buscaAprovadosBtn) {
+          buscaAprovadosBtn.addEventListener("click", filtrarAprovados);
+        }
+        if (buscaRemovidos) {
+          buscaRemovidos.addEventListener("input", filtrarRemovidos);
+        }
+        if (buscaRemovidosBtn) {
+          buscaRemovidosBtn.addEventListener("click", filtrarRemovidos);
+        }
+
+        function showMessage(text, approved) {
+          feedback.hidden = false;
+          feedback.textContent = text;
+          feedback.className =
+            "cadastro-aprovacao-feedback " +
+            (approved
+              ? "cadastro-aprovacao-feedback--ok"
+              : "cadastro-aprovacao-feedback--warn");
+        }
+
+        function createApprovedRow(nome, email, dataAprovacao) {
+          var row = document.createElement("tr");
+          var dataStr = dataAprovacao || new Date().toLocaleDateString("pt-BR");
+          row.innerHTML =
+            "<td>" +
+            nome +
+            "</td>" +
+            "<td>" +
+            email +
+            "</td>" +
+            "<td>" +
+            dataStr +
+            "</td>" +
+            '<td><span class="cadastro-status cadastro-status--aprovado">Aprovado</span></td>' +
+            '<td><div class="cadastro-acoes"><button type="button" class="cadastro-btn cadastro-btn--remover" data-acao="remover-acesso">Remover acesso</button></div></td>';
+          return row;
+        }
+
+        function createRemovedRow(nome, email, dataAprovacaoOriginal) {
+          var row = document.createElement("tr");
+          var dataRemocao = new Date().toLocaleDateString("pt-BR");
+          row.setAttribute("data-data-aprovacao", dataAprovacaoOriginal);
+          row.innerHTML =
+            "<td>" +
+            nome +
+            "</td>" +
+            "<td>" +
+            email +
+            "</td>" +
+            "<td>" +
+            dataRemocao +
+            "</td>" +
+            '<td><span class="cadastro-status cadastro-status--removido">Removido</span></td>' +
+            '<td><div class="cadastro-acoes"><button type="button" class="cadastro-btn cadastro-btn--restaurar" data-acao="restaurar-acesso">Restaurar acesso</button></div></td>';
+          return row;
+        }
+
+        tbody.addEventListener("click", function (e) {
+          var actionBtn = e.target.closest("[data-acao]");
+          if (!actionBtn) return;
+          var row = actionBtn.closest("tr");
+          if (!row) return;
+
+          var nameCell = row.children[0];
+          var emailCell = row.children[1];
+          var nome = nameCell ? nameCell.textContent.trim() : "Cadastro";
+          var email = emailCell ? emailCell.textContent.trim() : "";
+          var approved = actionBtn.getAttribute("data-acao") === "aprovar";
+
+          var pendingEmpty = tbody.querySelector(".cadastro-aprovacao-empty-row");
+          if (pendingEmpty) pendingEmpty.remove();
+          if (approved) {
+            var approvedEmpty = approvedBody.querySelector(".cadastro-aprovacao-empty-row");
+            if (approvedEmpty) approvedEmpty.remove();
+            approvedBody.prepend(createApprovedRow(nome, email));
+            filtrarAprovados();
+          }
+          row.remove();
+          refreshPendingCount();
+          refreshApprovedCount();
+          if (approved) {
+            showMessage("Cadastro aprovado: " + nome + " (" + email + ").", true);
+          } else {
+            showMessage("Cadastro não aprovado: " + nome + " (" + email + ").", false);
+          }
+        });
+
+        approvedBody.addEventListener("click", function (e) {
+          var removeBtn = e.target.closest('[data-acao="remover-acesso"]');
+          if (!removeBtn) return;
+          var row = removeBtn.closest("tr");
+          if (!row) return;
+          var nome = row.children[0] ? row.children[0].textContent.trim() : "Advogado";
+          var email = row.children[1] ? row.children[1].textContent.trim() : "";
+          var dataAprov = row.children[2] ? row.children[2].textContent.trim() : "";
+          var removedEmpty = removedBody.querySelector(".cadastro-aprovacao-empty-row");
+          if (removedEmpty) removedEmpty.remove();
+          removedBody.prepend(createRemovedRow(nome, email, dataAprov));
+          row.remove();
+          refreshApprovedCount();
+          refreshRemovedCount();
+          filtrarAprovados();
+          filtrarRemovidos();
+          showMessage(
+            "Acesso removido: " + nome + " (" + email + "). O histórico no banco foi preservado.",
+            false
+          );
+        });
+
+        removedBody.addEventListener("click", function (e) {
+          var restoreBtn = e.target.closest('[data-acao="restaurar-acesso"]');
+          if (!restoreBtn) return;
+          var row = restoreBtn.closest("tr");
+          if (!row) return;
+          var nome = row.children[0] ? row.children[0].textContent.trim() : "Advogado";
+          var email = row.children[1] ? row.children[1].textContent.trim() : "";
+          var dataAprovSalva = row.getAttribute("data-data-aprovacao") || "";
+          var approvedEmpty = approvedBody.querySelector(".cadastro-aprovacao-empty-row");
+          if (approvedEmpty) approvedEmpty.remove();
+          approvedBody.prepend(createApprovedRow(nome, email, dataAprovSalva));
+          row.remove();
+          refreshApprovedCount();
+          refreshRemovedCount();
+          filtrarAprovados();
+          filtrarRemovidos();
+          showMessage("Acesso restaurado: " + nome + " (" + email + ").", true);
+        });
+      })();
+    </script>
+  </body>
+</html>

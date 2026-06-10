@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AAPC — Dashboard gerencial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="navbar__brand" href="index.html#inicio" aria-label="Ir para o início">
+        <img
+          class="navbar__logo-img"
+          src="assets/logo2.png"
+          alt="AAPC"
+          width="200"
+          height="56"
+          decoding="async"
+        />
+        <span class="navbar__tagline"
+          >Associação dos Advogados da Procuradoria Jurídica da Copasa</span
+        >
+      </a>
+      <nav class="navbar__userbar" aria-label="Sessão do usuário">
+        <div class="navbar__session">
+          <div class="navbar__greeting">
+            Olá,
+            <span class="navbar__dropdown">
+              <button
+                type="button"
+                class="navbar__name-btn"
+                id="user-menu-btn"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="user-menu-panel"
+              >
+                <span class="navbar__user-name">Marcos</span>
+              </button>
+              <div
+                class="navbar__dropdown-panel"
+                id="user-menu-panel"
+                role="menu"
+                hidden
+              >
+                <div class="navbar__dropdown-email" role="none">
+                  <span class="navbar__dropdown-label">E-mail</span>
+                  <span class="navbar__dropdown-value"
+                    >marcos.silva@copasa.com.br</span
+                  >
+                </div>
+                <a class="navbar__dropdown-item" href="#" role="menuitem"
+                  >Alterar dados</a
+                >
+                <a
+                  class="navbar__dropdown-item navbar__dropdown-item--logout"
+                  href="login.html"
+                  role="menuitem"
+                  >Sair</a
+                >
+              </div>
+            </span>
+            <span class="navbar__user-role">(Gerência)</span>
+          </div>
+          <a class="navbar__logout" href="login.html">Sair</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-content dashboard-layout">
+      <aside class="dashboard-sidebar" aria-label="Navegação do portal">
+        <nav class="dashboard-tabs" aria-label="Módulos do portal">
+          <a
+            class="dashboard-tabs__tab dashboard-tabs__tab--active"
+            href="dashboard_gerencial.html"
+            aria-current="page"
+            >Dashboard gerencial</a
+          >
+          <div class="dashboard-nav-group dashboard-nav-group--advogados">
+            <button
+              type="button"
+              class="dashboard-tabs__tab dashboard-tabs__trigger"
+              aria-expanded="false"
+              aria-controls="submenu-advogados"
+            >
+              Advogados
+            </button>
+            <div class="dashboard-subtabs" id="submenu-advogados" hidden>
+              <a class="dashboard-subtabs__item" href="cadastro_advogado.html"
+                >Cadastro de advogados</a
+              >
+              <a class="dashboard-subtabs__item" href="lista_advogados.html"
+                >Lista de advogados</a
+              >
+            </div>
+          </div>
+          <div class="dashboard-nav-group dashboard-nav-group--processos">
+            <button
+              type="button"
+              class="dashboard-tabs__tab dashboard-tabs__trigger"
+              aria-expanded="false"
+              aria-controls="submenu-processos"
+            >
+              Processos
+            </button>
+            <div class="dashboard-subtabs" id="submenu-processos" hidden>
+              <a class="dashboard-subtabs__item" href="cadastro_processo.html"
+                >Cadastro de processo</a
+              >
+              <a class="dashboard-subtabs__item" href="processos.html"
+                >Lista de processos</a
+              >
+            </div>
+          </div>
+          <a class="dashboard-tabs__tab" href="tramitacoes.html">Tramitações</a>
+          <a class="dashboard-tabs__tab" href="#">Rateio financeiro</a>
+          <a class="dashboard-tabs__tab" href="gestao_diretoria.html"
+            >Gestão da diretoria</a
+          >
+        </nav>
+      </aside>
+      <div class="dashboard-shell">
+        <div class="dashboard-pagehead">
+          <div class="dashboard-pagehead__inner">
+            <h1 class="dashboard-pagehead__title">Dashboard gerencial</h1>
+          </div>
+        </div>
+
+        <main class="dashboard-main" id="conteudo-principal">
+        <div class="dashboard-main__inner">
+          <section class="dashboard-kpi" aria-label="Indicadores principais">
+            <article class="dashboard-card dashboard-card--kpi">
+              <h2 class="dashboard-card__label">Processos ativos</h2>
+              <p class="dashboard-card__value">1.050</p>
+              <p class="dashboard-card__hint">
+                Total sob gestão da associação
+              </p>
+            </article>
+            <article class="dashboard-card dashboard-card--kpi">
+              <h2 class="dashboard-card__label">Novos processos (mês)</h2>
+              <p class="dashboard-card__value">30</p>
+              <p class="dashboard-card__hint">
+                Média mensal de distribuição
+              </p>
+            </article>
+            <article class="dashboard-card dashboard-card--kpi">
+              <h2 class="dashboard-card__label">Total advogados</h2>
+              <p class="dashboard-card__value">35</p>
+              <p class="dashboard-card__hint">Associados ativos no rateio</p>
+            </article>
+          </section>
+
+          <section
+            class="dashboard-finance"
+            aria-labelledby="dashboard-finance-title"
+          >
+            <article class="dashboard-card dashboard-card--wide">
+              <h2 id="dashboard-finance-title" class="dashboard-card__label">
+                Resumo financeiro (mês corrente)
+              </h2>
+              <div class="dashboard-finance__body">
+                <div class="dashboard-finance__chart">
+                  <div
+                    class="dashboard-pie"
+                    role="img"
+                    aria-label="Gráfico: 95% rateio (teal), 5% reserva (vermelho)"
+                  ></div>
+                  <p class="dashboard-pie__legend">
+                    Principal: rateio (95%) · Vermelho: reserva (5%)
+                  </p>
+                </div>
+                <dl class="dashboard-finance__list">
+                  <div class="dashboard-finance__row">
+                    <dt>Total arrecadado</dt>
+                    <dd>R$ 100.000,00</dd>
+                  </div>
+                  <div
+                    class="dashboard-finance__row dashboard-finance__row--deduction"
+                  >
+                    <dt>(-) Retenção Fundo de Reserva (5%)</dt>
+                    <dd>R$ 5.000,00</dd>
+                  </div>
+                  <div
+                    class="dashboard-finance__row dashboard-finance__row--total"
+                  >
+                    <dt>(=) Valor líquido para rateio</dt>
+                    <dd>R$ 95.000,00</dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+          </section>
+
+          <section
+            class="dashboard-distribution"
+            aria-labelledby="dashboard-distribution-title"
+          >
+            <article class="dashboard-card dashboard-card--wide">
+              <h2
+                id="dashboard-distribution-title"
+                class="dashboard-section-title"
+              >
+                Distribuição equânime de processos
+              </h2>
+              <div class="dashboard-table-wrap">
+                <table class="dashboard-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Advogado</th>
+                      <th scope="col">OAB</th>
+                      <th scope="col">Processos ativos</th>
+                      <th scope="col">Última distribuição</th>
+                      <th scope="col">Carga %</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>João Silva</td>
+                      <td>30199</td>
+                      <td>28</td>
+                      <td>01/03/2026</td>
+                      <td class="dashboard-table__pct">2,7%</td>
+                    </tr>
+                    <tr>
+                      <td>Maria Souza</td>
+                      <td>23841</td>
+                      <td>30</td>
+                      <td>05/03/2026</td>
+                      <td class="dashboard-table__pct">2,9%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+        </div>
+      </main>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p class="footer__text">© 2026 AAPC - Todos os direitos reservados</p>
+    </footer>
+    <script>
+      (function () {
+        var root = document.querySelector(".navbar__dropdown");
+        var btn = document.getElementById("user-menu-btn");
+        var panel = document.getElementById("user-menu-panel");
+        if (!root || !btn || !panel) return;
+
+        function setOpen(open) {
+          panel.hidden = !open;
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        }
+
+        function toggle() {
+          setOpen(panel.hidden);
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggle();
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!root.contains(e.target)) setOpen(false);
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") setOpen(false);
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var nav = document.querySelector(".dashboard-sidebar nav.dashboard-tabs");
+        if (!nav) return;
+        var groups = nav.querySelectorAll(".dashboard-nav-group");
+
+        function closeGroup(group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+          group.classList.remove("is-open");
+          submenu.hidden = true;
+          trigger.setAttribute("aria-expanded", "false");
+        }
+
+        function openGroup(group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+          group.classList.add("is-open");
+          submenu.hidden = false;
+          trigger.setAttribute("aria-expanded", "true");
+        }
+
+        function closeOthers(except) {
+          groups.forEach(function (g) {
+            if (g !== except) closeGroup(g);
+          });
+        }
+
+        groups.forEach(function (group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+
+          if (group.classList.contains("is-open")) {
+            openGroup(group);
+          } else {
+            closeGroup(group);
+          }
+
+          trigger.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (submenu.hidden) {
+              closeOthers(group);
+              openGroup(group);
+            } else {
+              closeGroup(group);
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AAPC — Início</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <svg
+      class="hero__clip-defs"
+      aria-hidden="true"
+      focusable="false"
+      width="0"
+      height="0"
+    >
+      <defs>
+        <clipPath id="heroPhotoWave" clipPathUnits="objectBoundingBox">
+          <path
+            d="M0.15,0 C0.02,0.33 0.02,0.67 0.15,1 L1,1 L1,0 Z"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+    <header class="navbar">
+      <a class="navbar__brand" href="#inicio" aria-label="Ir para o início">
+        <img
+          class="navbar__logo-img"
+          src="assets/logo2.png"
+          alt="AAPC"
+          width="200"
+          height="56"
+          decoding="async"
+        />
+        <span class="navbar__tagline"
+          >Associação dos Advogados da Procuradoria Jurídica da Copasa</span
+        >
+      </a>
+      <nav class="navbar__actions" aria-label="Principal">
+        <a class="navbar__link navbar__link--active" href="#inicio">INÍCIO</a>
+        <a class="navbar__link" href="#sobre">SOBRE</a>
+        <a class="navbar__login" href="login.html">
+          <svg
+            class="navbar__login-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          LOGIN
+        </a>
+      </nav>
+    </header>
+
+    <div class="page-content">
+      <main>
+        <section class="hero" id="inicio" aria-labelledby="hero-title">
+          <div class="hero__wave" aria-hidden="true"></div>
+          <div class="hero__inner">
+            <div class="hero__copy">
+              <div class="hero__lines" aria-hidden="true"></div>
+              <p class="hero__welcome">Bem-vindo à</p>
+              <h1 class="hero__title" id="hero-title">
+                <img
+                  class="hero__logo-img"
+                  src="assets/logo2.png"
+                  alt="AAPC"
+                  width="400"
+                  height="112"
+                  decoding="async"
+                />
+              </h1>
+              <p class="hero__subtitle">
+                Associação dos Advogados da Procuradoria Jurídica da Copasa
+              </p>
+              <a class="hero__cta" id="acesso" href="login.html">
+                Acessar Portal
+                <span class="hero__cta-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <div class="hero__media">
+              <img
+                class="hero__img"
+                src="assets/hero-legal.png"
+                alt="Balança da justiça sobre livros jurídicos, com caneta e documentos em ambiente de escritório"
+                width="640"
+                height="480"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section id="sobre" class="about">
+          <div class="about__inner">
+            <h2 class="about__title">Sobre a Associação</h2>
+            <p class="about__text">
+              A AAPC (Associação dos Advogados da Procuradoria Jurídica da
+              Companhia de Saneamento de Minas Gerais – Copasa MG) é uma entidade
+              sediada em Belo Horizonte, fundada em 24 de julho de 2019.
+            </p>
+            <p class="about__text">
+              A associação tem como principal finalidade representar os interesses
+              dos advogados da Procuradoria Jurídica da Copasa MG, atuando de forma
+              organizada e institucional em defesa de seus membros.
+            </p>
+            <p class="about__text">
+              Além disso, a AAPC participa como representante em processos judiciais
+              envolvendo a companhia e é responsável pelo recebimento de honorários
+              advocatícios, exercendo papel ativo na gestão e suporte às
+              atividades jurídicas de seus associados.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <p class="footer__text">© 2026 AAPC - Todos os direitos reservados</p>
+    </footer>
+  </body>
+</html>

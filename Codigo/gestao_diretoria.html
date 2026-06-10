@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AAPC — Gestão da diretoria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="navbar__brand" href="index.html#inicio" aria-label="Ir para o início">
+        <img
+          class="navbar__logo-img"
+          src="assets/logo2.png"
+          alt="AAPC"
+          width="200"
+          height="56"
+          decoding="async"
+        />
+        <span class="navbar__tagline"
+          >Associação dos Advogados da Procuradoria Jurídica da Copasa</span
+        >
+      </a>
+      <nav class="navbar__userbar" aria-label="Sessão do usuário">
+        <div class="navbar__session">
+          <div class="navbar__greeting">
+            Olá,
+            <span class="navbar__dropdown">
+              <button
+                type="button"
+                class="navbar__name-btn"
+                id="user-menu-btn"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="user-menu-panel"
+              >
+                <span class="navbar__user-name">Marcos</span>
+              </button>
+              <div
+                class="navbar__dropdown-panel"
+                id="user-menu-panel"
+                role="menu"
+                hidden
+              >
+                <div class="navbar__dropdown-email" role="none">
+                  <span class="navbar__dropdown-label">E-mail</span>
+                  <span class="navbar__dropdown-value"
+                    >marcos.silva@copasa.com.br</span
+                  >
+                </div>
+                <a class="navbar__dropdown-item" href="#" role="menuitem"
+                  >Alterar dados</a
+                >
+                <a
+                  class="navbar__dropdown-item navbar__dropdown-item--logout"
+                  href="login.html"
+                  role="menuitem"
+                  >Sair</a
+                >
+              </div>
+            </span>
+            <span class="navbar__user-role">(Gerência)</span>
+          </div>
+          <a class="navbar__logout" href="login.html">Sair</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-content dashboard-layout">
+      <aside class="dashboard-sidebar" aria-label="Navegação do portal">
+        <nav class="dashboard-tabs" aria-label="Módulos do portal">
+          <a class="dashboard-tabs__tab" href="dashboard_gerencial.html"
+            >Dashboard gerencial</a
+          >
+          <div class="dashboard-nav-group dashboard-nav-group--advogados">
+            <button
+              type="button"
+              class="dashboard-tabs__tab dashboard-tabs__trigger"
+              aria-expanded="false"
+              aria-controls="submenu-advogados"
+            >
+              Advogados
+            </button>
+            <div class="dashboard-subtabs" id="submenu-advogados" hidden>
+              <a class="dashboard-subtabs__item" href="cadastro_advogado.html"
+                >Cadastro de advogados</a
+              >
+              <a class="dashboard-subtabs__item" href="lista_advogados.html"
+                >Lista de advogados</a
+              >
+            </div>
+          </div>
+          <div class="dashboard-nav-group dashboard-nav-group--processos">
+            <button
+              type="button"
+              class="dashboard-tabs__tab dashboard-tabs__trigger"
+              aria-expanded="false"
+              aria-controls="submenu-processos"
+            >
+              Processos
+            </button>
+            <div class="dashboard-subtabs" id="submenu-processos" hidden>
+              <a class="dashboard-subtabs__item" href="cadastro_processo.html"
+                >Cadastro de processo</a
+              >
+              <a class="dashboard-subtabs__item" href="processos.html"
+                >Lista de processos</a
+              >
+            </div>
+          </div>
+          <a class="dashboard-tabs__tab" href="tramitacoes.html">Tramitações</a>
+          <a class="dashboard-tabs__tab" href="#">Rateio financeiro</a>
+          <a
+            class="dashboard-tabs__tab dashboard-tabs__tab--active"
+            href="gestao_diretoria.html"
+            aria-current="page"
+            >Gestão da diretoria</a
+          >
+        </nav>
+      </aside>
+      <div class="dashboard-shell">
+        <div class="dashboard-pagehead">
+          <div class="dashboard-pagehead__inner">
+            <h1 class="dashboard-pagehead__title">Gestão da diretoria</h1>
+          </div>
+        </div>
+
+        <main class="dashboard-main" id="conteudo-principal">
+          <div class="dashboard-main__inner">
+            <article class="dashboard-card cadastro-aprovacao-panel">
+              <header class="cadastro-aprovacao-head">
+                <div>
+                  <h2 class="cadastro-aprovacao-head__title">Mandato atual</h2>
+                  <p class="cadastro-aprovacao-head__text">
+                    Período vigente da gestão e membros atualmente com acesso de gerência.
+                  </p>
+                </div>
+                <p class="cadastro-aprovacao-head__count">
+                  Vigência: <strong>01/01/2026 a 31/12/2027</strong>
+                </p>
+              </header>
+              <div class="dashboard-table-wrap">
+                <table class="dashboard-table cadastro-aprovacao-table">
+                  <thead>
+                    <tr>
+                      <th>Advogado</th>
+                      <th>E-mail</th>
+                      <th>Cargo</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Marcos Silva</td>
+                      <td>marcos.silva@copasa.com.br</td>
+                      <td>Presidência</td>
+                      <td><span class="cadastro-status cadastro-status--aprovado">Ativo</span></td>
+                    </tr>
+                    <tr>
+                      <td>João Silva</td>
+                      <td>joao.silva@copasa.com.br</td>
+                      <td>Tesouraria</td>
+                      <td><span class="cadastro-status cadastro-status--aprovado">Ativo</span></td>
+                    </tr>
+                    <tr>
+                      <td>Maria Souza</td>
+                      <td>maria.souza@copasa.com.br</td>
+                      <td>Secretaria</td>
+                      <td><span class="cadastro-status cadastro-status--aprovado">Ativo</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="dashboard-card cadastro-aprovacao-panel">
+              <header class="cadastro-aprovacao-head">
+                <div>
+                  <h2 class="cadastro-aprovacao-head__title">Composição da gestão</h2>
+                  <p class="cadastro-aprovacao-head__text">
+                    Defina quem entra ou sai da gerência para o próximo ciclo. Para cada pessoa selecionada, escolha o
+                    <strong>cargo</strong> na diretoria.
+                  </p>
+                </div>
+                <p class="cadastro-aprovacao-head__count">
+                  Selecionados: <strong id="gestao-selecionados-count">3</strong>
+                </p>
+              </header>
+
+              <div class="gestao-grid">
+                <section class="gestao-box">
+                  <h3 class="gestao-box__title">Advogados cadastrados</h3>
+                  <label class="visually-hidden" for="gestao-search">Buscar advogado</label>
+                  <input
+                    id="gestao-search"
+                    class="distribuicao-outro-search"
+                    type="search"
+                    placeholder="Buscar por nome..."
+                    autocomplete="off"
+                  />
+                  <ul class="distribuicao-outro-list" id="gestao-disponiveis"></ul>
+                  <p class="distribuicao-outro-hint" id="gestao-empty" hidden>
+                    Nenhum advogado encontrado.
+                  </p>
+                </section>
+
+                <section class="gestao-box">
+                  <h3 class="gestao-box__title">Gestores selecionados</h3>
+                  <ul class="distribuicao-outro-list" id="gestao-selecionados"></ul>
+                </section>
+              </div>
+
+              <footer class="modal__footer gestao-footer">
+                <button type="button" class="modal__btn modal__btn--ghost">Cancelar</button>
+                <button type="button" class="modal__btn modal__btn--primary">
+                  Salvar composição
+                </button>
+              </footer>
+            </article>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p class="footer__text">© 2026 AAPC - Todos os direitos reservados</p>
+    </footer>
+    <script>
+      (function () {
+        var root = document.querySelector(".navbar__dropdown");
+        var btn = document.getElementById("user-menu-btn");
+        var panel = document.getElementById("user-menu-panel");
+        if (!root || !btn || !panel) return;
+
+        function setOpen(open) {
+          panel.hidden = !open;
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        }
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          setOpen(panel.hidden);
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!root.contains(e.target)) setOpen(false);
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") setOpen(false);
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var nav = document.querySelector(".dashboard-sidebar nav.dashboard-tabs");
+        if (!nav) return;
+        var groups = nav.querySelectorAll(".dashboard-nav-group");
+
+        function closeGroup(group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+          group.classList.remove("is-open");
+          submenu.hidden = true;
+          trigger.setAttribute("aria-expanded", "false");
+        }
+
+        function openGroup(group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+          group.classList.add("is-open");
+          submenu.hidden = false;
+          trigger.setAttribute("aria-expanded", "true");
+        }
+
+        function closeOthers(except) {
+          groups.forEach(function (g) {
+            if (g !== except) closeGroup(g);
+          });
+        }
+
+        groups.forEach(function (group) {
+          var trigger = group.querySelector(".dashboard-tabs__trigger");
+          var submenu = group.querySelector(".dashboard-subtabs");
+          if (!trigger || !submenu) return;
+
+          if (group.classList.contains("is-open")) {
+            openGroup(group);
+          } else {
+            closeGroup(group);
+          }
+
+          trigger.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (submenu.hidden) {
+              closeOthers(group);
+              openGroup(group);
+            } else {
+              closeGroup(group);
+            }
+          });
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var CARGOS = [
+          "Presidência",
+          "Vice-presidência",
+          "Tesouraria",
+          "Secretaria",
+          "Conselheiro fiscal",
+          "Membro"
+        ];
+        var CARGO_PADRAO = "Membro";
+
+        var baseAdvogados = [
+          "Ana Paula Ribeiro",
+          "Beatriz Nunes",
+          "Carlos Ferreira",
+          "Fernanda Castro",
+          "João Silva",
+          "Juliana Matos",
+          "Lucas Andrade",
+          "Maria Souza",
+          "Marcos Silva",
+          "Patrícia Duarte",
+          "Pedro Lima",
+          "Ricardo Mendes"
+        ];
+
+        var selecionados = [
+          { nome: "Marcos Silva", cargo: "Presidência" },
+          { nome: "João Silva", cargo: "Tesouraria" },
+          { nome: "Maria Souza", cargo: "Secretaria" }
+        ];
+
+        var disponiveisEl = document.getElementById("gestao-disponiveis");
+        var selecionadosEl = document.getElementById("gestao-selecionados");
+        var searchEl = document.getElementById("gestao-search");
+        var countEl = document.getElementById("gestao-selecionados-count");
+        var emptyEl = document.getElementById("gestao-empty");
+        if (!disponiveisEl || !selecionadosEl || !searchEl || !countEl || !emptyEl) return;
+
+        function iniciais(nome) {
+          return nome
+            .split(" ")
+            .slice(0, 2)
+            .map(function (p) {
+              return p[0];
+            })
+            .join("")
+            .toUpperCase();
+        }
+
+        function escAttr(s) {
+          return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+        }
+
+        function nomeJaSelecionado(nome) {
+          return selecionados.some(function (item) {
+            return item.nome === nome;
+          });
+        }
+
+        function rowDisponivel(nome) {
+          var li = document.createElement("li");
+          li.className = "distribuicao-outro-list__item";
+          li.innerHTML =
+            '<button type="button" class="distribuicao-outro-row" data-nome="' +
+            escAttr(nome) +
+            '" data-action="add">' +
+            '<span class="modal-suggest__avatar">' +
+            iniciais(nome) +
+            "</span>" +
+            '<span class="modal-suggest__text"><strong class="modal-suggest__name">' +
+            nome +
+            "</strong></span>" +
+            '<span class="distribuicao-outro-row__action">Adicionar</span></button>';
+          return li;
+        }
+
+        function optionsCargo(cargoAtual) {
+          return CARGOS.map(function (c) {
+            return (
+              '<option value="' +
+              escAttr(c) +
+              '"' +
+              (c === cargoAtual ? " selected" : "") +
+              ">" +
+              c +
+              "</option>"
+            );
+          }).join("");
+        }
+
+        function rowSelecionado(item, index) {
+          var li = document.createElement("li");
+          li.className = "distribuicao-outro-list__item";
+          var sid = "gestao-cargo-" + index;
+          li.innerHTML =
+            '<div class="gestao-selecionado-row">' +
+            '<span class="modal-suggest__avatar" aria-hidden="true">' +
+            iniciais(item.nome) +
+            "</span>" +
+            '<div class="gestao-selecionado-info">' +
+            '<span class="modal-suggest__name">' +
+            item.nome +
+            "</span>" +
+            '<div class="gestao-cargo-field">' +
+            '<label class="gestao-cargo-label" for="' +
+            sid +
+            '">Cargo</label>' +
+            '<select class="gestao-cargo-select" id="' +
+            sid +
+            '" data-nome="' +
+            escAttr(item.nome) +
+            '">' +
+            optionsCargo(item.cargo) +
+            "</select>" +
+            "</div></div>" +
+            '<button type="button" class="gestao-btn-remover" data-action="remove" data-nome="' +
+            escAttr(item.nome) +
+            '">Remover</button>' +
+            "</div>";
+          return li;
+        }
+
+        function render() {
+          var q = searchEl.value.trim().toLowerCase();
+          var disponiveis = baseAdvogados.filter(function (n) {
+            return !nomeJaSelecionado(n) && n.toLowerCase().indexOf(q) !== -1;
+          });
+
+          disponiveisEl.innerHTML = "";
+          selecionadosEl.innerHTML = "";
+
+          disponiveis.forEach(function (n) {
+            disponiveisEl.appendChild(rowDisponivel(n));
+          });
+          selecionados.forEach(function (item, idx) {
+            selecionadosEl.appendChild(rowSelecionado(item, idx));
+          });
+
+          emptyEl.hidden = disponiveis.length > 0;
+          countEl.textContent = String(selecionados.length);
+        }
+
+        searchEl.addEventListener("input", render);
+
+        disponiveisEl.addEventListener("click", function (e) {
+          var btn = e.target.closest("[data-action='add']");
+          if (!btn) return;
+          var nome = btn.getAttribute("data-nome");
+          if (!nome || nomeJaSelecionado(nome)) return;
+          selecionados.push({ nome: nome, cargo: CARGO_PADRAO });
+          render();
+        });
+
+        selecionadosEl.addEventListener("change", function (e) {
+          var sel = e.target.closest(".gestao-cargo-select");
+          if (!sel) return;
+          var nome = sel.getAttribute("data-nome");
+          var cargo = sel.value;
+          selecionados.forEach(function (item) {
+            if (item.nome === nome) item.cargo = cargo;
+          });
+        });
+
+        selecionadosEl.addEventListener("click", function (e) {
+          var btn = e.target.closest("[data-action='remove']");
+          if (!btn) return;
+          var nome = btn.getAttribute("data-nome");
+          selecionados = selecionados.filter(function (item) {
+            return item.nome !== nome;
+          });
+          render();
+        });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>
