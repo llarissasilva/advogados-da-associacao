@@ -37,12 +37,15 @@ O sistema encontra-se em fase de implementação e aprimoramento contínuo. As f
 
 ## Minha Participação
 
-- Apoio à liderança e organização das atividades da equipe
-- Levantamento e análise de requisitos junto ao cliente
-- Documentação do projeto
-- Desenvolvimento de funcionalidades do sistema
-- Controle de versão utilizando Git e GitHub
-- Participação em reuniões de acompanhamento com o cliente
+* Liderança e organização das atividades da equipe
+* Distribuição e acompanhamento das tarefas do projeto
+* Levantamento e análise de requisitos junto ao cliente
+* Controle e acompanhamento dos requisitos do sistema
+* Elaboração e manutenção da documentação do projeto
+* Desenvolvimento de funcionalidades do sistema
+* Controle de versão utilizando Git e GitHub
+* Condução de reuniões de alinhamento e acompanhamento com o cliente
+
 
 ## Contexto do Projeto
 
