@@ -21,6 +21,9 @@ Além disso, o sistema visa aumentar a transparência e reduzir erros decorrente
 ### Controle Financeiro
 <img width="1172" height="620" alt="image" src="https://github.com/user-attachments/assets/6bab96bf-5ad1-4856-8de1-5826902b5ec3" />
 
+## Status do Projeto
+
+Projeto em andamento, com funcionalidades principais implementadas e novas melhorias previstas para futuras versões.
 
 ## Tecnologias Utilizadas
 
