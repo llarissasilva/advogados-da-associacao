@@ -4,19 +4,37 @@ O projeto AAPC - Sistema de Gestão tem como objetivo desenvolver uma plataforma
 
 Além disso, o sistema visa aumentar a transparência e reduzir erros decorrentes do controle manual, garantindo o cumprimento das regras estatutárias, como prazos e critérios de rateio. Com isso, pretende-se oferecer maior confiabilidade, agilidade e eficiência na administração dos processos e na distribuição dos honorários entre os associados .
 
+## Demonstração do Sistema
+
+### Tela de Login
+<img width="611" height="542" alt="image" src="https://github.com/user-attachments/assets/d4d10a0b-e812-4221-a88c-180902c95b70" />
+
+### Cadastro de Processos
+<img width="1142" height="800" alt="image" src="https://github.com/user-attachments/assets/eeefacf2-c994-443a-86d5-933ae5167091" />
+
+### Meus Processos
+<img width="1122" height="843" alt="image" src="https://github.com/user-attachments/assets/7f14f669-53d4-460c-98ce-3b2850c73824" />
+
+
+
 ## Tecnologias Utilizadas
 
-* HTML
-* CSS
-* JavaScript
-* Java
-* Git e GitHub
+- HTML
+- CSS
+- JavaScript
+- Java
+- MariaDB
+- Git
+- GitHub
 
 ## Minha Participação
 
-Atuei como integrante da equipe e participei da liderança do projeto, contribuindo para o planejamento, organização das atividades, acompanhamento do desenvolvimento e comunicação entre os membros da equipe.
-
-Também participei do levantamento de requisitos, documentação e desenvolvimento da solução proposta para o cliente.
+- Apoio à liderança e organização das atividades da equipe
+- Levantamento e análise de requisitos junto ao cliente
+- Documentação do projeto
+- Desenvolvimento de funcionalidades do sistema
+- Controle de versão utilizando Git e GitHub
+- Participação em reuniões de acompanhamento com o cliente
 
 ## Contexto do Projeto
 
@@ -30,3 +48,10 @@ Projeto desenvolvido em equipe na disciplina Trabalho Interdisciplinar III da PU
 * Acompanhamento de prazos
 * Distribuição de demandas entre advogados
 * Centralização das informações do sistema
+
+## Como Executar
+
+1. Clonar o repositório
+2. Configurar o banco de dados MariaDB
+3. Iniciar o backend Java
+4. Executar a aplicação localmente
