@@ -7,7 +7,7 @@ Além disso, o sistema visa aumentar a transparência e reduzir erros decorrente
 ## Demonstração do Sistema
 
 ### Tela de Login
-<img width="611" height="542" alt="image" src="https://github.com/user-attachments/assets/d4d10a0b-e812-4221-a88c-180902c95b70" />
+<img width="1864" height="646" alt="image" src="https://github.com/user-attachments/assets/d33358c6-a831-4dfb-bcbe-db2266d949f7" />
 
 ### Cadastro de Processos
 <img width="1142" height="800" alt="image" src="https://github.com/user-attachments/assets/eeefacf2-c994-443a-86d5-933ae5167091" />
@@ -15,6 +15,11 @@ Além disso, o sistema visa aumentar a transparência e reduzir erros decorrente
 ### Meus Processos
 <img width="1122" height="843" alt="image" src="https://github.com/user-attachments/assets/7f14f669-53d4-460c-98ce-3b2850c73824" />
 
+### Distribuição dos Processos
+<img width="1052" height="885" alt="image" src="https://github.com/user-attachments/assets/eeace420-e826-4899-a2e0-7f737c6b409e" />
+
+### Controle Financeiro
+<img width="1172" height="620" alt="image" src="https://github.com/user-attachments/assets/6bab96bf-5ad1-4856-8de1-5826902b5ec3" />
 
 
 ## Tecnologias Utilizadas
