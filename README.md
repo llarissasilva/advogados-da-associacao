@@ -23,7 +23,7 @@ Além disso, o sistema visa aumentar a transparência e reduzir erros decorrente
 
 ## Status do Projeto
 
-Projeto em andamento, com funcionalidades principais implementadas e novas melhorias previstas para futuras versões.
+O sistema encontra-se em fase de implementação e aprimoramento contínuo. As funcionalidades principais já foram implementadas, enquanto novas funcionalidades, ajustes de interface, melhorias de desempenho e refinamentos da solução continuam sendo desenvolvidos pela equipe ao longo do semestre.
 
 ## Tecnologias Utilizadas
 
